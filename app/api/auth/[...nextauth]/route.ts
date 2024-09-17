@@ -2,9 +2,11 @@ import { createAppClient, viemConnector } from "@farcaster/auth-client";
 import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { NextRequest } from "next/server";
 
-const handler = (req: NextApiRequest, res: NextApiResponse) =>
-  NextAuth(req, res, {
+const handler = (request: NextRequest, res: NextApiResponse) => {
+  const req = request as unknown as NextApiRequest;
+  return NextAuth(req, res, {
     providers: [
       CredentialsProvider({
         name: "Sign in with Farcaster",
@@ -45,7 +47,7 @@ const handler = (req: NextApiRequest, res: NextApiResponse) =>
           const verifyResponse = await appClient.verifySignInMessage({
             message: credentials?.message as string,
             signature: credentials?.signature as `0x${string}`,
-            domain: "example.com",
+            domain: "http://localhost:3000/",
             nonce: csrfToken,
           });
           const { success, fid } = verifyResponse;
@@ -63,5 +65,6 @@ const handler = (req: NextApiRequest, res: NextApiResponse) =>
       }),
     ],
   });
+};
 
 export { handler as GET, handler as POST };

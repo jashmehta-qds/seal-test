@@ -9,8 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cloudflare/workers-types": "^4.20240909.0",
     "@farcaster/auth-kit": "^0.6.0",
-    "@frames.js/render": "^0.3.8",
+    "@lens-protocol/client": "^2.3.1",
+    "@types/express": "^4.17.21",
+    "@xmtp/frames-validator": "^0.6.2",
     "axios": "^1.7.7",
     "date-fns": "^4.1.0",
     "ethers": "^6.13.2",
