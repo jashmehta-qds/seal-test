@@ -5,7 +5,7 @@ import {
   SignInButton,
   StatusAPIResponse,
 } from "@farcaster/auth-kit";
-import { getCsrfToken, signIn, signOut, useSession } from "next-auth/react";
+import { getCsrfToken, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
 import { useCallback, useState } from "react";
 
@@ -70,26 +70,26 @@ function Content() {
   );
 }
 
-function Profile() {
-  const { data: session } = useSession();
+// function Profile() {
+//   const { data: session } = useSession();
 
-  return session ? (
-    <div style={{ fontFamily: "sans-serif" }}>
-      <p>Signed in as {session.user?.name}</p>
-      <p>
-        <button
-          type="button"
-          style={{ padding: "6px 12px", cursor: "pointer" }}
-          onClick={() => signOut()}
-        >
-          Click here to sign out
-        </button>
-      </p>
-    </div>
-  ) : (
-    <p>
-      Click the &quot;Sign in with Farcaster&quote; button above, then scan the
-      QR code to sign in.
-    </p>
-  );
-}
+//   return session ? (
+//     <div style={{ fontFamily: "sans-serif" }}>
+//       <p>Signed in as {session.user?.name}</p>
+//       <p>
+//         <button
+//           type="button"
+//           style={{ padding: "6px 12px", cursor: "pointer" }}
+//           onClick={() => signOut()}
+//         >
+//           Click here to sign out
+//         </button>
+//       </p>
+//     </div>
+//   ) : (
+//     <p>
+//       Click the &quot;Sign in with Farcaster&quote; button above, then scan the
+//       QR code to sign in.
+//     </p>
+//   );
+// }
