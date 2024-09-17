@@ -7,21 +7,16 @@ import {
 } from "@farcaster/auth-kit";
 import { getCsrfToken, signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useCallback, useState } from "react";
 
 import "@farcaster/auth-kit/styles.css";
 import Image from "next/image";
 
-interface HeaderProps {
-  goBack?: () => void;
-}
 
 const config = {
   relay: "https://relay.farcaster.xyz",
 };
-export default function Header({ goBack }: HeaderProps) {
-  const router = useRouter();
+export default function Header() {
   return (
     <header
       className={`sticky top-0 z-50 bg-white bg-opacity-70 backdrop-blur-lg rounded-lg shadow-md min-w-[400px] border-2 border-slate-500`}
