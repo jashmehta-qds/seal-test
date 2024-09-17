@@ -2,7 +2,7 @@ import { fetchMetadata } from "frames.js/next";
  
 export async function generateMetadata() {
   return {
-    title: "My page",
+    title: "My page 123",
     other: {
       // ...
       ...(await fetchMetadata(

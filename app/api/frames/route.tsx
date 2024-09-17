@@ -7,6 +7,13 @@ const frames = createFrames({
 const handleRequest = frames(async () => {
   return {
     image: <span>Test</span>,
+    imageOptions: {
+      dynamic: true,
+      headers: {
+        "Cache-Control": "max-age=10",
+      },
+    },
+
     buttons: [<Button action="post">Click me</Button>],
   };
 });
