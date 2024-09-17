@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        monospace: ["Permanent Marker", "monospace"],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
