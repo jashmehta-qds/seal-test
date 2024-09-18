@@ -12,15 +12,18 @@ const frames = createFrames({
   },
 });
 const handleRequest = frames(async (ctx) => {
-
   const { protocol, host } = ctx.url;
   const imageUrl = `${protocol}//${host}/api/image`;
   return {
     title: "10k Predictions on Kramer By 9/29 ? 🚀",
     image: imageUrl,
     buttons: [
-      <Button action="post">Yes</Button>,
-      <Button action="post">No</Button>,
+      <Button action="post" key={"yes"}>
+        Yes
+      </Button>,
+      <Button action="post" key={"no"}>
+        No
+      </Button>,
     ],
   };
 });
