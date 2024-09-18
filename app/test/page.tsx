@@ -8,7 +8,7 @@ export async function generateMetadata() {
       ...(await fetchMetadata(
         // provide full URL to your /frames endpoint
         new URL(
-          "/frames",
+          "/api/frames",
           process.env.VERCEL_URL
             ? `https://${process.env.VERCEL_URL}`
             : "http://localhost:3000"
