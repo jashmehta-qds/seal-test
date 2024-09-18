@@ -35,9 +35,16 @@ const handleRequest = async (req: NextRequest) => {
       >
         {/* Top content displaying "Wagers: 28" */}
         <div tw="flex justify-center">
-          <span tw="text-white text-[42px] font-bold bg-black bg-opacity-60 px-2 pb-4 rounded-lg">
+          <span tw="text-white text-[56px] font-bold bg-black bg-opacity-60 px-2 pb-4" style={{borderRadius: "8px 8px 0 0"}}>
             Total Votes: {totalVotes}
           </span>
+         
+        </div>
+        <div tw="flex justify-center">
+        <span tw="text-white text-[28px] font-bold bg-black bg-opacity-60 px-2 pb-4 rounded-lg">
+          10k Predictions on Kramer By 9/29 ? 🚀
+          </span> 
+         
         </div>
 
         {/* Spacer div to push the rest of the content to the bottom */}
@@ -91,14 +98,14 @@ const handleRequest = async (req: NextRequest) => {
               className="w-full"
               tw="absolute inset-0 flex justify-between items-center text-white font-bold px-4"
             >
-              <div tw="flex flex-col" style={{ fontSize: "32px" }}>
+              <div tw="flex flex-col" style={{ fontSize: "36px" }}>
                 <div tw="flex">{yesPercent} %</div>
                 <div tw="flex" style={{ fontSize: "24px" }}>
                   (Yes)
                 </div>
               </div>
 
-              <div tw="flex flex-col" style={{ fontSize: "32px" }}>
+              <div tw="flex flex-col" style={{ fontSize: "36px" }}>
                 <div tw="flex">{100 - yesPercent} %</div>
                 <div tw="flex" style={{ fontSize: "24px" }}>
                   (No)
