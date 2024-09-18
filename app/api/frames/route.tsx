@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { fonts } from "@/app/fonts";
 import { Button, createFrames } from "frames.js/next";
 
@@ -12,10 +11,12 @@ const frames = createFrames({
     };
   },
 });
-const handleRequest = frames(async () => {
-  const imageUrl = `http://localhost:3000/api/image`;
+const handleRequest = frames(async (ctx) => {
+
+  const { protocol, host } = ctx.url;
+  const imageUrl = `${protocol}//${host}/api/image`;
   return {
-    title: "Frames Demo",
+    title: "10k Predictions on Kramer By 9/29 ? 🚀",
     image: imageUrl,
     buttons: [
       <Button action="post">Yes</Button>,
