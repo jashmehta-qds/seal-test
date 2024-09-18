@@ -80,7 +80,7 @@ const handleGetRequest = frames(async (ctx) => {
 
       imageUrl = `${protocol}//${host}/api/image/result?yesVotes=${hasVotedYes}&totalVotes=${totalVotes}`;
       return {
-        title: "10k Predictions on Kramer By 9/29 ? 🚀",
+        title: "Result: 10k Predictions on Kramer By 9/29 ? 🚀",
         image: imageUrl,
         buttons: [
           <Button
