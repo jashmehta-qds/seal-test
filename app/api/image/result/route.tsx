@@ -33,7 +33,6 @@ const handleRequest = async (req: NextRequest) => {
           boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)", // shadow for modern look
         }}
       >
-        {/* Top content displaying "Wagers: 28" */}
         <div tw="flex justify-center">
           <span tw="text-white text-[56px] font-bold bg-black bg-opacity-60 px-2 pb-4" style={{borderRadius: "8px 8px 0 0"}}>
             Total Votes: {totalVotes}
@@ -47,10 +46,8 @@ const handleRequest = async (req: NextRequest) => {
          
         </div>
 
-        {/* Spacer div to push the rest of the content to the bottom */}
         <div tw="flex flex-grow"> </div>
 
-        {/* Bottom content (the health bar) */}
         <div tw="flex flex-col items-start w-full h-auto text-center tracking-wider">
           <span
             tw="text-center font-bold text-[42px] text-white flex justify-center items-center w-full mb-2"
@@ -66,16 +63,14 @@ const handleRequest = async (req: NextRequest) => {
               boxShadow: "0 0 10px rgba(0, 255, 0, 0.5)",
             }}
           >
-            {/* Health Bar Fill */}
             <div tw="flex h-full w-full space-x-2">
-              {/* 6 filled blocks to represent 65% */}
               {[...Array(yesFloor)].map((_, index) => (
                 <div
                   key={index}
                   tw="h-full bg-green-500 rounded-sm flex-grow border-2 border-[#333]"
                   style={{
-                    background: "linear-gradient(90deg, #22c55e, #16a34a)", // Green gradient for visual effect
-                    flex: "1", // Ensures all blocks are equal size
+                    background: "linear-gradient(90deg, #22c55e, #16a34a)", 
+                    flex: "1", 
                   }}
                 />
               ))}
@@ -86,14 +81,13 @@ const handleRequest = async (req: NextRequest) => {
                   key={index}
                   tw="h-full bg-transparent rounded-sm flex-grow"
                   style={{
-                    border: "1px solid #333", // Border for the empty blocks
-                    flex: "1", // Ensures all blocks are equal size
+                    border: "1px solid #333", 
+                    flex: "1", 
                   }}
                 />
               ))}
             </div>
 
-            {/* Percentage labels */}
             <div
               className="w-full"
               tw="absolute inset-0 flex justify-between items-center text-white font-bold px-4"

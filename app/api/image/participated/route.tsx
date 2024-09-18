@@ -34,8 +34,8 @@ const handleRequest = async (req: NextRequest) => {
           height: "100%",
           padding: "24px",
           borderRadius: "12px",
-          boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)", // shadow for modern look
-          position: "relative", // Needed for footer positioning
+          boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)",
+          position: "relative",
         }}
       >
         <div tw="flex flex-col items-start w-full h-full text-center tracking-wider">
@@ -67,7 +67,7 @@ const handleRequest = async (req: NextRequest) => {
             bottom: 0,
             left: 0,
             width: "100vw",
-            backgroundColor: "rgba(0, 0, 0, 0.75)", // Black with 75% opacity
+            backgroundColor: "rgba(0, 0, 0, 0.75)",
             color: "white",
             textAlign: "center",
             padding: "16px",
@@ -76,7 +76,6 @@ const handleRequest = async (req: NextRequest) => {
           <span
             tw="p-auto m-auto"
             style={{
-              fontFamily: "helvetica", // Custom font
               fontSize: "32px",
             }}
           >

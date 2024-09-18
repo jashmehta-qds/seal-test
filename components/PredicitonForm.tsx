@@ -62,7 +62,6 @@ const PredictionForm = () => {
     e.preventDefault();
     if (!isSubmitDisabled) {
       console.log('Form submitted:', formState);
-      // Perform your form submission logic here
     }
   };
 
@@ -78,7 +77,7 @@ const PredictionForm = () => {
         Make Your Prediction
       </h2>
 
-      {/* Prediction Field */}
+
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Your Prediction
@@ -103,7 +102,6 @@ const PredictionForm = () => {
         )}
       </div>
 
-      {/* Result Date Field */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Result Date
@@ -132,7 +130,6 @@ const PredictionForm = () => {
         )}
       </div>
 
-      {/* Wager Field */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Your Wager
@@ -158,7 +155,6 @@ const PredictionForm = () => {
         )}
       </div>
 
-      {/* Odds Field */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Your Odds
@@ -184,7 +180,6 @@ const PredictionForm = () => {
         )}
       </div>
 
-      {/* Submit Button */}
       <div>
         <motion.button
           type="submit"
