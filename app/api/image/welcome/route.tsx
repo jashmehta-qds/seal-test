@@ -3,7 +3,7 @@ import { ImageResponse } from "next/og";
 import path from "path";
 
 const handleRequest = async () => {
-  const imagePath = path.join(process.cwd(), "public", "image-bg.jpg");
+  const imagePath = path.join(process.cwd(), "public", "question.jpg");
   const fontPath = path.join(process.cwd(), "public", "PermanentMarker-Regular.ttf");
   const fontBuffer = await fs.readFile(fontPath);
   const imageBuffer = await fs.readFile(imagePath);
@@ -22,7 +22,6 @@ const handleRequest = async () => {
           flexDirection: "column",
           width: "100%",
           height: "100%",
-          //  background: "linear-gradient(to right, #7e22ce, #ec4899, #ef4444)", // gradient from purple to pink to red
           padding: "24px",
           borderRadius: "12px",
           boxShadow: "0px 10px 30px rgba(0, 0, 0, 0.1)", // shadow for modern look
