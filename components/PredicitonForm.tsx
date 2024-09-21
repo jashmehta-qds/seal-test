@@ -3,7 +3,6 @@
 import { useProfile } from "@farcaster/auth-kit";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 interface FormState {
@@ -24,7 +23,7 @@ const PredictionForm = () => {
 
   const [errors, setErrors] = useState({
     prediction: "",
-    resultDate: "",
+    // resultDate: "",
   });
 
   const [isSubmitDisabled, setIsSubmitDisabled] = useState(true);
@@ -32,11 +31,12 @@ const PredictionForm = () => {
   // Form validation
   useEffect(() => {
     const isValidPrediction = formState.prediction.trim() !== "";
-    const isValidDate = formState.resultDate !== null;
+    // const isValidDate = formState.resultDate !== null;
+    const isValidDate = true;
 
     setErrors({
       prediction: isValidPrediction ? "" : "Prediction is required",
-      resultDate: isValidDate ? "" : "Please select a valid date",
+      // resultDate: isValidDate ? "" : "Please select a valid date",
     });
     console.log(isAuthenticated, fid);
     if (isValidPrediction && isValidDate && isAuthenticated) {
@@ -112,7 +112,7 @@ const PredictionForm = () => {
         )}
       </div>
 
-      <div>
+      {/* <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
           Result Date
         </label>
@@ -138,7 +138,7 @@ const PredictionForm = () => {
             {errors.resultDate}
           </motion.p>
         )}
-      </div>
+      </div> */}
       <div>
         <motion.button
           type="submit"
