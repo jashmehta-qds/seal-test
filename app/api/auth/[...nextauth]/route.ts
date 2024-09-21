@@ -1,12 +1,14 @@
 import { createAppClient, viemConnector } from "@farcaster/auth-client";
-import { NextApiRequest, NextApiResponse } from "next";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { NextRequest } from "next/server";
+interface RouteHandlerContext {
+  params: { nextauth: string[] };
+}
+const handler = async (request: NextRequest, context: RouteHandlerContext) => {
+  const reqClone = request.clone();
 
-const handler = (request: NextRequest, res: NextApiResponse) => {
-  const req = request as unknown as NextApiRequest;
-  return NextAuth(req, res, {
+  return NextAuth(request as NextRequest, context, {
     providers: [
       CredentialsProvider({
         name: "Sign in with Farcaster",
@@ -21,9 +23,6 @@ const handler = (request: NextRequest, res: NextApiResponse) => {
             type: "text",
             placeholder: "0x0",
           },
-          // In a production app with a server, these should be fetched from
-          // your Farcaster data indexer rather than have them accepted as part
-          // of credentials.
           name: {
             label: "Name",
             type: "text",
@@ -36,9 +35,11 @@ const handler = (request: NextRequest, res: NextApiResponse) => {
           },
         },
         async authorize(credentials) {
-          const {
-            body: { csrfToken },
-          } = req;
+          const body = await reqClone.formData();
+          const csrfToken = body.get("csrfToken")?.toString() || "";
+          console.log(csrfToken);
+
+          // Now you can access the body params
 
           const appClient = createAppClient({
             ethereum: viemConnector(),
@@ -47,17 +48,16 @@ const handler = (request: NextRequest, res: NextApiResponse) => {
           const verifyResponse = await appClient.verifySignInMessage({
             message: credentials?.message as string,
             signature: credentials?.signature as `0x${string}`,
-            domain: "http://localhost:3000/",
-            nonce: csrfToken,
+            domain: "localhost:3000",
+            nonce: csrfToken, // Use the csrfToken from the body
           });
-          const { success, fid } = verifyResponse;
 
-          if (!success) {
+          if (!verifyResponse?.success) {
             return null;
           }
 
           return {
-            id: fid.toString(),
+            id: verifyResponse.fid.toString(),
             name: credentials?.name,
             image: credentials?.pfp,
           };

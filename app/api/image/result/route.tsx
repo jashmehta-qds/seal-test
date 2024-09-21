@@ -14,10 +14,13 @@ const handleRequest = async (req: NextRequest) => {
   const imageBuffer = await fs.readFile(imagePath);
   const base64Image = `data:image/png;base64,${imageBuffer.toString("base64")}`;
   const url = new URL(req.url);
-  const yesVotes =parseInt(url.searchParams.get("yesVotes") || "0");
-  const totalVotes = parseInt(url.searchParams.get("totalVotes") || "0"); 
-  const yesPercent = Math.floor(yesVotes*100/totalVotes)
-  const yesFloor = Math.floor(yesPercent/10)
+  const yesVotes = parseInt(url.searchParams.get("yesVotes") || "0");
+  const totalVotes = parseInt(url.searchParams.get("totalVotes") || "0");
+  const title =
+    url.searchParams.get("title") || "10k Predictions on Kramer By 9/29 ? 🚀";
+
+  const yesPercent = Math.floor((yesVotes * 100) / totalVotes);
+  const yesFloor = Math.floor(yesPercent / 10);
   return new ImageResponse(
     (
       <div
@@ -34,16 +37,17 @@ const handleRequest = async (req: NextRequest) => {
         }}
       >
         <div tw="flex justify-center">
-          <span tw="text-white text-[56px] font-bold bg-black bg-opacity-60 px-2 pb-4" style={{borderRadius: "8px 8px 0 0"}}>
+          <span
+            tw="text-white text-[56px] font-bold bg-black bg-opacity-60 px-2 pb-4"
+            style={{ borderRadius: "8px 8px 0 0" }}
+          >
             Total Votes: {totalVotes}
           </span>
-         
         </div>
         <div tw="flex justify-center">
-        <span tw="text-white text-[28px] font-bold bg-black bg-opacity-60 px-2 pb-4 rounded-lg">
-          10k Predictions on Kramer By 9/29 ? 🚀
-          </span> 
-         
+          <span tw="text-white text-[28px] font-bold bg-black bg-opacity-60 px-2 pb-4 rounded-lg">
+            {title}
+          </span>
         </div>
 
         <div tw="flex flex-grow"> </div>
@@ -69,20 +73,20 @@ const handleRequest = async (req: NextRequest) => {
                   key={index}
                   tw="h-full bg-green-500 rounded-sm flex-grow border-2 border-[#333]"
                   style={{
-                    background: "linear-gradient(90deg, #22c55e, #16a34a)", 
-                    flex: "1", 
+                    background: "linear-gradient(90deg, #22c55e, #16a34a)",
+                    flex: "1",
                   }}
                 />
               ))}
 
               {/* 4 empty blocks representing 35% */}
-              {[...Array(10-yesFloor)].map((_, index) => (
+              {[...Array(10 - yesFloor)].map((_, index) => (
                 <div
                   key={index}
                   tw="h-full bg-transparent rounded-sm flex-grow"
                   style={{
-                    border: "1px solid #333", 
-                    flex: "1", 
+                    border: "1px solid #333",
+                    flex: "1",
                   }}
                 />
               ))}

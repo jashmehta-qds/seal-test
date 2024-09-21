@@ -1,9 +1,8 @@
 "use client";
 
 import {
-  AuthKitProvider,
   SignInButton,
-  StatusAPIResponse,
+  StatusAPIResponse
 } from "@farcaster/auth-kit";
 import { getCsrfToken, signIn, signOut } from "next-auth/react";
 import Link from "next/link";
@@ -12,10 +11,6 @@ import { useCallback, useState } from "react";
 import "@farcaster/auth-kit/styles.css";
 import Image from "next/image";
 
-
-const config = {
-  relay: "https://relay.farcaster.xyz",
-};
 export default function Header() {
   return (
     <header
@@ -25,12 +20,12 @@ export default function Header() {
         <div className="flex items-center">
           <Image src="/logo.png" alt="wager-logo" width={70} height={70} />
           <Link href="/">
-            <span className="font-monospace font-semibold italic text-3xl tracking-wide">wager </span>
+            <span className="font-monospace font-semibold italic text-3xl tracking-wide">
+              wager{" "}
+            </span>
           </Link>
         </div>
-        <AuthKitProvider config={config}>
-          <Content />
-        </AuthKitProvider>
+        <Content />
       </div>
     </header>
   );

@@ -1,16 +1,26 @@
 import { promises as fs } from "fs";
 import { ImageResponse } from "next/og";
+import { NextRequest } from "next/server";
 import path from "path";
 
-const handleRequest = async () => {
+const handleRequest = async (req: NextRequest) => {
   const imagePath = path.join(process.cwd(), "public", "question.jpg");
-  const fontPath = path.join(process.cwd(), "public", "PermanentMarker-Regular.ttf");
+  const fontPath = path.join(
+    process.cwd(),
+    "public",
+    "PermanentMarker-Regular.ttf"
+  );
   const fontBuffer = await fs.readFile(fontPath);
   const imageBuffer = await fs.readFile(imagePath);
   const base64Image = `data:image/jpeg;base64,${imageBuffer.toString(
     "base64"
   )}`;
 
+  const url = new URL(req.url);
+  const title =
+    url.searchParams.get("title") !== "undefined"
+      ? url.searchParams.get("title")
+      : "Will there be over 10k Kramer predictions before 9/29 midnight?";
   return new ImageResponse(
     (
       <div
@@ -36,7 +46,7 @@ const handleRequest = async () => {
               color: "white",
             }}
           >
-            Will there be over 10k Kramer predictions before 9/29 midnight?
+            {title}
           </span>
         </div>
       </div>
@@ -50,10 +60,10 @@ const handleRequest = async () => {
       width: 1200,
       fonts: [
         {
-            name: "PermanentMarker",
-            data: fontBuffer
-        }
-      ]
+          name: "PermanentMarker",
+          data: fontBuffer,
+        },
+      ],
     }
   );
 };

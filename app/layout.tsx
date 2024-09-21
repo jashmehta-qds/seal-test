@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import AuthKitProviderWrapper from "@/providers/AuthKitProviderWrapper";
 import SessionProviderWrapper from "@/providers/SessionProviderWrapper";
 import "./globals.css";
 
@@ -10,7 +11,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
@@ -21,15 +22,14 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body
-        className={` antialiased`}
-      >
+      <body className={` antialiased`}>
         <SessionProviderWrapper>
-          <div className="flex justify-center sticky top-5">
-            <Header />
-          </div>
-
-          {children}
+          <AuthKitProviderWrapper>
+            <div className="flex justify-center sticky top-5">
+              <Header />
+            </div>
+            {children}
+          </AuthKitProviderWrapper>
         </SessionProviderWrapper>
       </body>
     </html>
