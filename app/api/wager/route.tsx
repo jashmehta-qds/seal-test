@@ -2,13 +2,6 @@
 import { createClient } from "@vercel/kv"; // Vercel KV import
 import { NextResponse } from "next/server";
 import { uuid } from "uuidv4";
-interface CustomFrame {
-  title: string;
-  createdByFid: string;
-  yesVoters: string[];
-  noVoters: string[];
-}
-
 export async function POST(request: Request) {
   try {
     const customFramesDb = createClient({
