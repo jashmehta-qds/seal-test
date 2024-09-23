@@ -22,13 +22,13 @@ export async function POST(request: Request) {
     }
 
     // Save to Vercel KV
-    const x = await customFramesDb.hset(id, {
+    const response = await customFramesDb.hset(id, {
       title,
       createdByFid,
       yesVoters: [],
       noVoters: [],
     });
-    console.log(x);
+    console.log(response);
     // Respond with success
     return NextResponse.json({
       success: true,
