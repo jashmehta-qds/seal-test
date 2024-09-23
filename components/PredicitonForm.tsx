@@ -11,10 +11,10 @@ interface FormState {
 }
 
 const PredictionForm = () => {
-  const [message, setMessage] = useState("");
+  const [, setMessage] = useState("");
   const {
     isAuthenticated,
-    profile: { username, fid, bio, displayName, pfpUrl },
+    profile: { fid },
   } = useProfile();
   const [formState, setFormState] = useState<FormState>({
     prediction: "",
